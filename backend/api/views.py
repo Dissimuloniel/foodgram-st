@@ -4,8 +4,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.permissions import (IsAuthenticated,
-                                        IsAuthenticatedOrReadOnly)
+from rest_framework.permissions import (IsAuthenticated, IsAuthenticatedOrReadOnly)
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from reportlab.pdfgen import canvas
@@ -14,9 +13,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.pagesizes import A4
 from io import BytesIO
 from django.db.models import Sum
-
-from recipes.models import (Ingredient, Recipe, RecipeIngredient,
-                            ShoppingCart, FavoriteRecipes)
+from recipes.models import (Ingredient, Recipe, RecipeIngredient, ShoppingCart, FavoriteRecipes)
 from users.models import Subscriptions
 from .serializers import (IngredientSerializer, RecipeWriteSerializer,
                           RecipeReadSerializer, ShortRecipesSerializer,
@@ -24,9 +21,7 @@ from .serializers import (IngredientSerializer, RecipeWriteSerializer,
 from .filters import IngredientFilter, RecipeFilter
 from .permissions import IsAuthor
 
-
 User = get_user_model()
-
 
 class CustomUserViewSet(UserViewSet):
     @action(
