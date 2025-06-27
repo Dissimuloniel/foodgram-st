@@ -29,7 +29,7 @@ paths:
                 properties:
                   count:
                     type: integer
-                    example: 123
+                    example: 100
                     description: 'Общее количество объектов в базе'
                   next:
                     type: string
@@ -117,7 +117,7 @@ paths:
                 properties:
                   count:
                     type: integer
-                    example: 123
+                    example: 100
                     description: 'Общее количество объектов в базе'
                   next:
                     type: string
@@ -506,7 +506,7 @@ paths:
                 properties:
                   count:
                     type: integer
-                    example: 123
+                    example: 100
                     description: 'Общее количество объектов в базе'
                   next:
                     type: string
@@ -715,12 +715,12 @@ components:
           type: string
           maxLength: 150
           description: "Имя"
-          example: "Вася"
+          example: "Олег"
         last_name:
           type: string
           maxLength: 150
           description: "Фамилия"
-          example: "Иванов"
+          example: "Олегович"
         is_subscribed:
           type: boolean
           readOnly: true
@@ -754,12 +754,12 @@ components:
           type: string
           maxLength: 150
           description: "Имя"
-          example: "Вася"
+          example: "Олег"
         last_name:
           type: string
           maxLength: 150
           description: "Фамилия"
-          example: "Иванов"
+          example: "Олегович"
         is_subscribed:
           type: boolean
           readOnly: true
@@ -877,11 +877,11 @@ components:
         name:
           type: string
           maxLength: 128
-          example: 'Капуста'
+          example: 'Абрикос'
         measurement_unit:
           type: string
           maxLength: 64
-          example: 'кг'
+          example: 'г'
       required:
         - name
         - measurement_unit
@@ -895,7 +895,7 @@ components:
           type: string
           maxLength: 128
           description: 'Название'
-          example: 'Картофель отварной'
+          example: 'Варёный абрикос'
         measurement_unit:
           type: string
           maxLength: 64
@@ -917,7 +917,7 @@ components:
           format: email
           maxLength: 254
           description: "Адрес электронной почты"
-          example: "vpupkin@yandex.ru"
+          example: "OlegYesYes@yandex.ru"
         id:
           type: integer
           readOnly: true
@@ -926,21 +926,21 @@ components:
           description: "Уникальный юзернейм"
           pattern: ^[\w.@+-]+\z
           maxLength: 150
-          example: "vasya.pupkin"
+          example: "oelg.nonono"
         first_name:
           type: string
           maxLength: 150
           description: "Имя"
-          example: "Вася"
+          example: "Олег"
         last_name:
           type: string
           maxLength: 150
           description: "Фамилия"
-          example: "Иванов"
+          example: "Олегович"
         password:
           type: string
           description: "Пароль"
-          example: "Qwerty123"
+          example: "12345678"
       required:
         - username
         - password
@@ -955,7 +955,7 @@ components:
           format: email
           maxLength: 254
           description: "Адрес электронной почты"
-          example: "vpupkin@yandex.ru"
+          example: "OlegYesYes@yandex.ru"
         id:
           type: integer
           readOnly: true
@@ -964,17 +964,17 @@ components:
           description: "Уникальный юзернейм"
           pattern: ^[\w.@+-]+\z
           maxLength: 150
-          example: "vasya.pupkin"
+          example: "oleg.nonono"
         first_name:
           type: string
           maxLength: 150
           description: "Имя"
-          example: "Вася"
+          example: "Олег"
         last_name:
           type: string
           maxLength: 150
           description: "Фамилия"
-          example: "Иванов"
+          example: "Олегович"
       required:
         - username
         - first_name
