@@ -41,7 +41,7 @@ jobs:
         with:
           context: ./backend/
           push: true
-          tags: dablek/foodgram_backend:latest
+          tags: Dissimuloniel/foodgram_backend:latest
   build_frontend_and_push_to_docker_hub:
     name: Push Docker image to DockerHub
     needs: tests
@@ -62,4 +62,4 @@ jobs:
         with:
           context: ./frontend/
           push: true
-          tags: dablek/foodgram_frontend:latest
+          tags: Dissimuloniel/foodgram_frontend:latest
