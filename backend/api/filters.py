@@ -1,7 +1,5 @@
 import django_filters
-
 from recipes.models import Ingredient, Recipe
-
 
 class IngredientFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(
@@ -13,33 +11,23 @@ class IngredientFilter(django_filters.FilterSet):
         model = Ingredient
         fields = ['name']
 
-
 class RecipeFilter(django_filters.FilterSet):
-    is_favorited = django_filters.NumberFilter(
-        method='filter_is_favorited'
-    )
-    is_in_shopping_cart = django_filters.NumberFilter(
-        method='filter_is_in_shopping_cart'
-    )
+    is_favorited = django_filters.BooleanFilter(method='filter_by_favorite')
+    is_in_shopping_cart = django_filters.BooleanFilter(method='filter_by_shopping_cart')
 
     class Meta:
         model = Recipe
         fields = ['author']
 
-    def filter_is_favorited(self, queryset, name, value):
-        user = self.request.user
-        if not user.is_authenticated or value not in (1, 0):
-            return queryset
-        if value:
-            return queryset.filter(favorited_by__user=user)
-        else:
-            return queryset.exclude(favorited_by__user=user)
+    def _get_user_or_none(self) -> models.QuerySet:
+        return self.request.user if self.request.user.is_authenticated else None
 
-    def filter_is_in_shopping_cart(self, queryset, name, value):
-        user = self.request.user
-        if not user.is_authenticated or value not in (1, 0):
+    def filter_by_favorite(self, queryset: models.QuerySet, name: str, value: bool) -> models.QuerySet:
+        if (user := self._get_user_or_none()) is None:
             return queryset
-        if value:
-            return queryset.filter(shopping_cart__user=user)
-        else:
-            return queryset.exclude(shopping_cart__user=user)
+        return queryset.filter(favorited_by__user=user) if value else queryset.exclude(favorited_by__user=user)
+
+    def filter_by_shopping_cart(self, queryset: models.QuerySet, name: str, value: bool) -> models.QuerySet:
+        if (user := self._get_user_or_none()) is None:
+            return queryset
+        return queryset.filter(shopping_cart__user=user) if value else queryset.exclude(shopping_cart__user=user)
