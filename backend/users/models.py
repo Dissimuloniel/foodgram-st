@@ -2,9 +2,7 @@ from django.db import models
 from django.db.models import Q, F
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractUser, UserManager
-
 from . import constants
-
 
 class CustomUserManager(UserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -18,7 +16,6 @@ class CustomUserManager(UserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, password, **extra_fields)
-
 
 class CustomUser(AbstractUser):
     email = models.EmailField(
@@ -49,7 +46,6 @@ class CustomUser(AbstractUser):
         null=True,
         verbose_name='Avatar'
     )
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('username', 'first_name', 'last_name')
 
@@ -59,7 +55,6 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
-
 
 class Subscriptions(models.Model):
     user = models.ForeignKey(
