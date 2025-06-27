@@ -1,9 +1,6 @@
 import json
-
 from django.core.management.base import BaseCommand
-
 from recipes.models import Ingredient
-
 
 class Command(BaseCommand):
     help = 'Загружает ингредиенты из JSON в базу данных'
