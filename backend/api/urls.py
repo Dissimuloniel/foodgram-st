@@ -5,10 +5,8 @@ from .views import CustomUserViewSet, IngredientViewSet, RecipeViewSet
 router_recipes = DefaultRouter()
 router_recipes.register('ingredients', IngredientViewSet)
 router_recipes.register('recipes', RecipeViewSet)
-
 router_users = DefaultRouter()
 router_users.register('users', CustomUserViewSet)
-
 urlpatterns = [
     path('', include(router_recipes.urls)),
     path('', include(router_users.urls)),
